@@ -74,7 +74,14 @@ window.onload = function() {
   
   // Build a system
   const ui = SwaggerUIBundle({
-    url: "http://petstore.swagger.io/v2/swagger.json",
+    url: "",
+	  requestInterceptor: (req) => {
+		if(req.loadSpec) {
+		  var hash = btoa("ApiDocsUser" + ":" + "") // base64
+		  req.headers.Authorization = "Basic " + hash
+		}
+		return req
+	  },
     dom_id: '#swagger-ui',
     deepLinking: true,
     presets: [
