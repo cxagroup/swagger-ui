@@ -77,7 +77,7 @@ window.onload = function() {
     url: "",
 	  requestInterceptor: (req) => {
 		if(req.loadSpec) {
-		  var hash = btoa("ApiDocsUser" + ":" + "") // base64
+		  var hash = btoa("ApiDocsUser" + ":" + "<<Add_ClientSecret_Here>>") // base64
 		  req.headers.Authorization = "Basic " + hash
 		}
 		return req
